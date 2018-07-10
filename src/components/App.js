@@ -4,19 +4,13 @@ import Header from './Header/Header'
 import Footer from './Footer'
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {name: "Vladimir"};
-  }
   render() {
-    setTimeout(() => {
-      this.setState({name: "Vlad"})
-    }, 1000)
+    const title = "Welcome Vladimir!";
     return (
       <div>
-        <Header />
-        <h1>My name is {this.state.name} and I am a developer</h1>
-        < Footer />
+        <Header title={title} name={"Vladimir - you deserve it"}/>
+        <Header title={"Yo man, be brave"} name={"Vladimir - you deserve it"}/>
+        <Footer />
       </div>
     );
   }
