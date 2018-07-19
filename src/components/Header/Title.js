@@ -6,6 +6,7 @@ class Title extends Component {
     return (
       <div>
         <h1>{this.props.title}</h1>
+        <h1>{this.props.name}</h1>
       </div>
     );
   }
