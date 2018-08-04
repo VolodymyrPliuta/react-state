@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
-import Header from './Header/Header'
-import Body from './Body'
-import Body1 from './Body1'
-import Body2 from './Body2'
-import Footer from './Footer'
+import Header from './Header/Header';
+import Body from './Body';
+import Body1 from './Body1';
+import Body2 from './Body2';
+import Footer from './Footer';
+import Clock from './Clock';
+import Fun from './Fun';
+import ToggleFun from './ToggleFun';
+import ToggleRun from './ToggleRun';
+import Level1 from './Level/Level1';
+import Surf from './Surf';
 
 const green = '#39D1B4';
 const yellow = '#FFD712';
+const one = 1;
+
+class SimpleComponent extends Component {
+  render(){
+    console.log(this.props)
+    //Object destructuring
+    const {dostuff, drink, food} = this.props
+    return <p>Simple {dostuff} {drink} {food} </p>
+  }
+}
+export {SimpleComponent};
 
 class App extends Component {
   constructor() {
@@ -16,8 +33,19 @@ class App extends Component {
       title: "Welcome",
       conference: "DEFCON-2018",
       hanguot: "Code on the beach 2018",
-      color: green
+      color: green,
+      date: new Date(),
+      fun: "Have fun when run!",
+      run: "GO run",
+      level: "We are on Level",
+      num: 1
     };
+  }
+
+  very = () => {
+    this.setState({
+      title: 'Very Welcome'
+    })
   }
 
   removeConf = () => {
@@ -26,38 +54,89 @@ class App extends Component {
     });
   }
 
+  increase = () => {
+    this.setState((prevState) => {
+      return {
+        num: prevState.num + one
+      }
+    }
+    );
+  }
+
+  addFun = () => {
+    this.setState({
+      fun:'more fun more run!'
+    });
+  }
+
+  toggleFun = () => {
+    if (this.state.fun == 'Have fun when run!'){
+      this.setState({
+        fun:'more fun'
+      })
+    }
+    else{this.setState({
+      fun: 'Have fun when run!'
+    })}
+  }
+
+  toggleRun = () => {
+    if (this.state.run == 'GO run'){
+      this.setState({
+        run: 'Run like a bun'
+      })
+    }
+    else{this.setState({
+      run: 'GO run'
+    })}
+  }
+
+
   removeP = () => {
     //let element = document.querySelector('.rum')
     let element = document.querySelector('.rum');
-    console.log(element)
     element.parentNode.removeChild(element);
     //element.removeChild(element);
   }
 
   changeColor = () => {
-    this.setState({color: yellow});
+    console.log('frog')
+    this.setState({color: 'red'});
+    let bl = this.state.color
+    return bl.toString()
   }
 
   changeTitle(frog) {
     this.setState({frog});
   }
   render() {
+    console.log(this.props)
+    console.log('hgj',this.toggelFun, this.state.fun)
     const title = "Welcome Vladimir!";
     console.log(this)
     return (
       <div>
         <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title }/>
-        <Body changeColor={this.changeColor} conference={this.state.conference} hangout={this.state.hangout} removeP={this.removeP} removeConf={this.removeConf} />
+        <Body state={this.state} changeColor={this.changeColor} color={this.state.color} conference={this.state.conference} hangout={this.state.hangout} removeP={this.removeP} removeConf={this.removeConf} />
+        <p onClick={(e) => this.changeColor(e)}> change color</p>
         <Body1>
           <li>New York conf</li>
           <li>Boston conf</li>
         </Body1>
+        <SimpleComponent dostuff='Yoo' drink='henesy' food='Salmon'/>
         <Body2 conference="DEFCON" />
         <p> exact: {this.state.conference} </p>
+        <h2> {this.state.conference} </h2>
         <Footer />
+        <Clock tik={this.state.date} conference={this.state.conference} removeConf={this.removeConf} />
+        <Fun addFun={this.addFun} fun={this.state.fun} />
+        <ToggleFun toggleFun={this.toggleFun} fun={this.state.fun} />
+        <ToggleRun toggleRun={this.toggleRun} run={this.state.run} />
+        <Level1 level={this.state.level} welcome={this.state.title} very={this.very}/>
+        <Surf num={this.state.num} increase={this.increase}/>
       </div>
     );
-        console.log(this)
+    console.log(this)
   }
 }
 
