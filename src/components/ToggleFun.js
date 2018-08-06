@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Tf from './Tf';
+import PropTypes from 'prop-types';
 
 class ToggleFun extends Component {
   render() {
@@ -10,6 +11,10 @@ class ToggleFun extends Component {
       </div>
     )
   }
+}
+
+ToggleFun.propTypes = {
+  toggleFun:PropTypes.func
 }
 
 export default ToggleFun
