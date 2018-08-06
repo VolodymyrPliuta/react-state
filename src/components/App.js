@@ -10,7 +10,6 @@ import ToggleFun from './ToggleFun';
 import ToggleRun from './ToggleRun';
 import Level1 from './Level/Level1';
 import Surf from './Surf';
-import Articles from './Articles';
 
 const green = '#39D1B4';
 const yellow = '#FFD712';
@@ -148,7 +147,6 @@ render() {
       <ToggleRun toggleRun={this.toggleRun} run={this.state.run} />
       <Level1 level={this.state.level} welcome={this.state.title} very={this.very}/>
       <Surf num={this.state.num} increase={this.increase}/>
-      <Articles />
     </div>
   );
   console.log(this)
