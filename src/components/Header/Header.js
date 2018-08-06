@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
-import Title from './Title'
+import Title from './Title';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
-  handleChange(e) { 
+  handleChange(e) {
     const title = e.target.value;
     this.props.changeTitle(title);
   }
@@ -15,6 +15,10 @@ class Header extends Component {
       </div>
     );
   }
+}
+
+Header.propTypes = {
+  title: PropTypes.string
 }
 
 export default Header;
