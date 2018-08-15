@@ -56,113 +56,124 @@ class App extends Component {
     const url = `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=0fd16f9ca25b4e0ea140b5e5aa1aa085`
 
     const resultOfFetch = fetch(url)
-    .then(response => { return response.json() } )
+      .then(response => { return response.json() } )
 
     console.log(resultOfFetch)
     //.then(addArticle)
     //.catch(e => requestError(e, 'article'));
   }
 
-removeConf = () => {
-  this.setState({
-    conference: "Code on the beach 2018"
-  });
-}
+  removeConf = () => {
+    this.setState({
+      conference: "Code on the beach 2018"
+    });
+  }
 
-increase = () => {
-  this.setState((prevState) => {
-    return {
-      num: prevState.num + one
+  increase = () => {
+    this.setState((prevState) => {
+      return {
+        num: prevState.num + one
+      }
     }
+    );
   }
-  );
-}
 
-addFun = () => {
-  this.setState({
-    fun:'more fun more run!'
-  });
-}
-
-toggleFun = () => {
-  if (this.state.fun == 'Have fun when run!'){
+  addFun = () => {
     this.setState({
-      fun:'more fun'
-    })
+      fun:'more fun more run!'
+    });
   }
-  else{this.setState({
-    fun: 'Have fun when run!'
-  })}
-}
 
-toggleRun = () => {
-  if (this.state.run == 'GO run'){
-    this.setState({
-      run: 'Run like a bun'
-    })
+  toggleFun = () => {
+    if (this.state.fun == 'Have fun when run!'){
+      this.setState({
+        fun:'more fun'
+      })
+    }
+    else{this.setState({
+      fun: 'Have fun when run!'
+    })}
   }
-  else{this.setState({
-    run: 'GO run'
-  })}
-}
+
+  toggleRun = () => {
+    if (this.state.run == 'GO run'){
+      this.setState({
+        run: 'Run like a bun'
+      })
+    }
+    else{this.setState({
+      run: 'GO run'
+    })}
+  }
 
 
-removeP = () => {
-  //let element = document.querySelector('.rum')
-  let element = document.querySelector('.rum');
-  element.parentNode.removeChild(element);
-  //element.removeChild(element);
-}
+  removeP = () => {
+    //let element = document.querySelector('.rum')
+    let element = document.querySelector('.rum');
+    element.parentNode.removeChild(element);
+    //element.removeChild(element);
+  }
 
-changeColor = () => {
-  console.log('frog')
-  this.setState({color: 'red'});
-  let bl = this.state.color
-  return bl.toString()
-}
+  changeColor = () => {
+    console.log('frog')
+    this.setState({color: 'red'});
+    let bl = this.state.color
+    return bl.toString()
+  }
 
-changeTitle(frog) {
-  this.setState({frog});
-}
-render() {
-  console.log(this.props)
-  console.log('hgj',this.toggelFun, this.state.fun)
-  const title = "Welcome Vladimir!";
-  console.log(this)
-  this.getStuff()
-  return (
-    <div>
-      <Route path="/route" component={RouteComponent}></Route>
-      <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title }/>
-      <Route exact path="/secret" component={Secret}></Route>
-      <Route exact path="/" render={() => {
-        return(
-        <div>
-          <Body state={this.state} changeColor={this.changeColor} color={this.state.color} conference={this.state.conference} hangout={this.state.hangout} removeP={this.removeP} removeConf={this.removeConf} />
-          <p onClick={(e) => this.changeColor(e)}> change color</p>
-          <Body1>
-            <li>New York conf</li>
-            <li>Boston conf</li>
-          </Body1>
-          <SimpleComponent dostuff='Yoo' drink='henesy' food='Salmon'/>
-          <Body2 conference="DEFCON" />
-          <p> exact: {this.state.conference} </p>
-          <h2> {this.state.conference} </h2>
-          <Footer />
-          <Clock tik={this.state.date} conference={this.state.conference} removeConf={this.removeConf} />
-          <Fun addFun={this.addFun} fun={this.state.fun} />
-          <ToggleFun toggleFun={this.toggleFun} fun={this.state.fun} />
-          <ToggleRun toggleRun={this.toggleRun} run={this.state.run} />
-          <Level1 level={this.state.level} welcome={this.state.title} very={this.very}/>
-          <Surf num={this.state.num} increase={this.increase}/>
-        </div>
-        )
-      }}>
+  changeTitle(frog) {
+    this.setState({frog});
+  }
+  render() {
+    const title = "Welcome Vladimir!";
+    this.getStuff()
+    return (
+      <div>
+        <Route path="/route" render={(test) => (<RouteComponent {...test} isAuthed={true}/> )} />
+        <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title }/>
+        <Route exact path="/secret" component={Secret}></Route>
+        <Route exact path="/"
+          render={() => {
+            return(
+              <div>
+                <Body state={this.state} changeColor={this.changeColor} color={this.state.color} conference={this.state.conference} hangout={this.state.hangout} removeP={this.removeP} removeConf={this.removeConf} />
+                <p onClick={(e) => this.changeColor(e)}> change color</p>
+                <Body1>
+                  <li>New York conf</li>
+                  <li>Boston conf</li>
+                </Body1>
+                <SimpleComponent dostuff='Yoo' drink='henesy' food='Salmon'/>
+                <Body2 conference="DEFCON" />
+                <p> exact: {this.state.conference} </p>
+                <h2> {this.state.conference} </h2>
+                <Footer />
+                <Clock tik={this.state.date} conference={this.state.conference} removeConf={this.removeConf} />
+                <Fun addFun={this.addFun} fun={this.state.fun} />
+                <ToggleFun toggleFun={this.toggleFun} fun={this.state.fun} />
+                <ToggleRun toggleRun={this.toggleRun} run={this.state.run} />
+                <Level1 level={this.state.level} welcome={this.state.title} very={this.very}/>
+                <Surf num={this.state.num} increase={this.increase}/>
+              </div>
+            )
+          }}
+      >
+      </Route>
+      <Route exact path="/nice"
+        render={
+        () => {
+          return(
+            <div>
+              <h1> Nice to know how to work with router</h1>
+              <h2> Time for surfing </h2>
+              <h3> If I don't responce my phone I am surfing. Please leave your messege after the tone</h3>
+            </div>
+          )
+        }}
+      >
       </Route>
     </div>
-  );
-  console.log(this)
-}
+    );
+  }
 }
 
 export default App;

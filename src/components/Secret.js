@@ -8,6 +8,7 @@ class Secret extends React.Component{
           <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/route'>RouteComponent</Link></li>
+            <li><Link to='/nice'>Nice to Know</Link></li>
           </ul>
       </div>
     )
