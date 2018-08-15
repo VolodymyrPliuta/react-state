@@ -12,7 +12,7 @@ import Level1 from './Level/Level1';
 import Surf from './Surf';
 import { Route } from 'react-router-dom';
 import RouteComponent from './RouteComponent';
-import Secret from './Secret';
+import Secret from './Secret'
 
 const green = '#39D1B4';
 const yellow = '#FFD712';
@@ -121,17 +121,22 @@ class App extends Component {
     return bl.toString()
   }
 
+  
+
   changeTitle(frog) {
     this.setState({frog});
   }
   render() {
     const title = "Welcome Vladimir!";
     this.getStuff()
+    const passedProp = "This is passes prop"
+    this.props={test:'test', blah:'bkas'}
+    console.log(this.props)
     return (
       <div>
-        <Route path="/route" render={(test) => (<RouteComponent {...test} isAuthed={true}/> )} />
+        <Route path="/route" render={() => (<RouteComponent {...this.props} number={this.state.num} changeColor={this.changeColor} isAuthed={true}/> )} />
         <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title }/>
-        <Route exact path="/secret" component={Secret}></Route>
+        <Route exact path="/secret" render ={() => (<Secret number={this.state.num} increase={this.increase}/> )} />
         <Route exact path="/"
           render={() => {
             return(
