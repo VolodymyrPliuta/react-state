@@ -1,3 +1,4 @@
+![external_image](https://cdn-images-1.medium.com/max/2000/1*qXcjSfRj0C0ir2yMsYiRyw.jpeg)
 ## Full React implementation
 <b>Have any feedback or requests regarding new things to implement? [issues](https://github.com/VolodymyrPliuta/React-state/issues)</b>
 
