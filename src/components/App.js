@@ -5,6 +5,13 @@ import Footer from './Footer'
 
 class App extends Component {
   render() {
+    const Menu = () => {
+      return(
+        <div>
+          <p>Return <a href="/">Home</a></p>
+        </div>
+      )
+    }
     const Note = () => {
       return(
         <div>
@@ -26,10 +33,10 @@ class App extends Component {
     const title = "Welcome Vladimir!";
     return (
       <body>
+        <Menu />
         <Note />
         <div id="main_content_wrap" class="outer">
           <section id="main_content" class="inner">
-            <p>Return <a href="/">Home</a></p>
             <h1>Jobs at Kickass Consulting</h1>
             <h2>Full-Stack Web Developer</h2>
             <p>
