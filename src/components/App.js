@@ -5,9 +5,17 @@ import Footer from './Footer'
 
 class App extends Component {
   render() {
+    const Note = () => {
+      return(
+        <div>
+          
+        </div>
+      )
+    }
     const title = "Welcome Vladimir!";
     return (
       <body>
+        <Note />
         <div id="main_content_wrap" class="outer">
           <section id="main_content" class="inner">
             <p>Return <a href="/">Home</a></p>
