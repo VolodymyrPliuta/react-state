@@ -8,7 +8,18 @@ class App extends Component {
     const Note = () => {
       return(
         <div>
-          
+        </div>
+      )
+    }
+    const Section = () => {
+      return(
+        <div>
+        </div>
+      )
+    }
+    const List = () => {
+      return(
+        <div>
         </div>
       )
     }
